@@ -4,12 +4,13 @@
   "description": "Cool ban game bot",
   "main": "app.js",
   "dependencies": {
+    "canvas": "^2.6.1",
     "discord.js": "^12.5.1",
     "enmap": "^5.8.4",
     "fs": "^0.0.1-security",
-    "promises": "^0.2.5",
     "prettier": "^2.2.1",
-    "canvas": "^2.6.1"
+    "promises": "^0.2.5",
+    "util": "^0.12.3"
   },
   "devDependencies": {},
   "scripts": {

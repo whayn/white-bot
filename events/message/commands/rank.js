@@ -11,12 +11,24 @@ const generateImg = async (user, user_exp) => {
     const mh = canvas.height / 2;
     const max = user_exp.level == 0 ? 100 : 100 * (user_exp.level / 10 + 1);
 
+    const color_list = {
+        online: "#43b581",
+        idle: "#faa61a",
+        dnd: "#f04747",
+        offline: "#636b75",
+        streaming: "#643da7"
+    }
+
+    const color_list_obj = Object.create(color_list);
+    const status = user.presence.status; 
+    const user_color = color_list_obj[status]
+
     // Fond
     ctx.fillStyle = "#23272a"
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // Cercle & avatar
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = user_color;
     ctx.beginPath();
     ctx.arc(mh, mh, 50, 0, 2 * Math.PI);
     ctx.fill();
@@ -30,6 +42,7 @@ const generateImg = async (user, user_exp) => {
     ctx.restore();
 
     // Barre de progresion
+    ctx.fillStyle = "#fff"
     ctx.fillRect(mh + 70, mh - 50, canvas.width - mh - 90, 20);
     ctx.fillStyle = "#666fff"
     ctx.fillRect(mh + 72, mh - 48, user_exp.exp / max * (canvas.width - mh - 94), 16);
@@ -41,9 +54,8 @@ const generateImg = async (user, user_exp) => {
 
     // Exp & level
     ctx.font = '16px "Varela Round"';
-    ctx.fillText("Level:" + user_exp.level, mh + 70, mh + 20);
-    ctx.fillText("Experience:" + user_exp.exp, mh + 70, mh + 40);
-    
+    ctx.fillText("Lvl:" + user_exp.level, mh + 70, mh + 20);
+    ctx.fillText("Exp:" + user_exp.exp, mh + 70, mh + 40);
 
     return canvas.toBuffer();   
 };
