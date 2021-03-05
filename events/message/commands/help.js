@@ -1,3 +1,5 @@
+const { Invite, Collection } = require("discord.js");
+
 module.exports = {
   exec: ({ client, message }) => {
     message.channel.send({
@@ -9,7 +11,14 @@ module.exports = {
         },
         description: client.commands.map((cmd) => `\`${cmd.config.name}\``).join(' '),
       },
-    });
+    })
+//    async function asyncCall() {
+//      console.log('calling');
+//      const result = await message.guild.fetchInvites();
+//      console.log(result);
+//      // expected output: "resolved"
+//    }
+
   },
   config: { name: "help", aliases: ["h"] },
 };

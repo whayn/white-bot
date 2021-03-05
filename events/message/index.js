@@ -3,7 +3,6 @@ const client = require('../../app')
 const update = require('./update')
 client.cooldowns = {}
 
-const hello = ["hello", "hi", "hey", "salut"];
 
 module.exports = (message) => {
     if(!message.content || message.author.bot || message.channel.type == 'dm' ) return
@@ -16,6 +15,5 @@ module.exports = (message) => {
     const [command, ...args] = message.content.toLowerCase().slice(prefix.length).split(' ') 
     const cmdToExport = client.commands.find(obj => [obj.config.name, ...obj.config.aliases].includes(command))
     if(cmdToExport ) return cmdToExport.exec({client, message, prefix, command, args})
-    if(hello.some((string) =>  message.content.toLowerCase().startsWith(string) )) return message.react('👋')
 }
 
