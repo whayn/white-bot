@@ -3,6 +3,7 @@ const { inspect } = require("util")
 module.exports = {
     exec: async({ command, message, prefix }) => {
     const toEval = message.content.slice(prefix.length).trimStart().slice(command.length).trimStart()
+    if(toEval.length === 0) return message.channel.send("Veulliez fournir des arguments.")
     console.log(toEval)
     const evaled = inspect(await eval(/^\s*(?:let|const|var|if|switch|for)|(?<!function\*?\s*(?:\s+[a-zA-Z_$][a-zA-Z0-9_$]*)?\([^]*\)\s*{[^}]*|(?:\([^]*\)|[a-zA-Z_$][a-zA-Z0-9_$]*\s+)\s*=>\s*{?\s*)(?<![{]+([^}]+({[^]*}[^]*)?|))return(\s*(?:!\S+|;)|\s+\S+)/.test(toEval) ? `(async() => {${toEval}})()` : `(async() => ${toEval})()`), { showHidden: 1, depth: 0 })
     message.channel.send({embed: {
