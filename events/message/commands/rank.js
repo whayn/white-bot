@@ -62,8 +62,9 @@ const generateImg = async (user, user_exp) => {
 
 module.exports = {
     exec: async ({ message, args }) => {
+        console.log("lancé")
         const member = message.guild.members.cache.get(args[0] && args[0].replace(/\D+/g, "")) || message.member;
-        const user_exp = existsSync(`./_database/users/exp/${message.author.id}.json`) ? require(`../../../_database/users/exp/${message.author.id}.json`) : { level: 0, exp: 0 };
+        const user_exp = existsSync(`./_database/users/exp/${member.id}.json`) ? require(`../../../_database/users/exp/${member.id}.json`) : { level: 0, exp: 0 };
 
         const img = await generateImg(member.user, user_exp)
         if(!img) return message.channel.send("<:error:813061047329488976> An error occured, please try again.")

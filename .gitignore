@@ -1,4 +1,4 @@
 config.json
-node_modules
-/_database
+node_modules/
+_database/users/exp/
 .DS_store

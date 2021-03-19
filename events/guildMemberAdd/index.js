@@ -1,10 +1,9 @@
 module.exports = (member) => {
+    if(member.user.bot) return // Id du serveur sur lequel je teste mon bot.
 
-    if(member.user.bot) return 
-
-    member.roles.add('817462367377162290') 
+    member.roles.add('821793469726326815') // Id du role que j'ajoute aux nouveaux arrivants
     
-    member.guild.channels.cache.get("817461382832062507").send({embed: {color: "#e53935", description: `<a:wavegif:814888449417019442> Welcome to ${member} ! `}}) 
+    member.guild.channels.cache.get("822228105346678814").send({embed: {color: "#229954", description: `<a:wave_animated:821828653758939216> Welcome to ${member} ! `}}) // id du salon ou je veux envoyer mon message
 }
 
 // member.guild.id != "805457447216218132" ||

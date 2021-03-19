@@ -11,7 +11,7 @@ module.exports = {
     if (data.exp + random_exp >= exp_max) {
       data.exp = 0
       data.level++
-      await message.channel.send(`Bien Joué ${message.member} ! Tu passe level **${data.level}**`) && message.react("⬆️")
+      await message.channel.send(`Good job ${message.member} ! You are level **${data.level}**. Thank you for being active. \n ||Try !rank to check your actual level and exp||`) && message.react("⬆️")
       writeFileSync(`./_database/users/exp/${userId}.json`, JSON.stringify(data))
     } else {
       data.exp += random_exp
