@@ -11,7 +11,7 @@ module.exports = {
         const answer = new Discord.MessageEmbed()
             .setColor("#e53935")
             .setTitle(":8ball:  8ball")
-            .setDescription("    ")
+            .setdescription("    ")
             .setThumbnail("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/twitter/259/pool-8-ball_1f3b1.png")
             .addFields(
                 {name: ":question: Question", value: question},
@@ -22,5 +22,5 @@ module.exports = {
 
         message.channel.send(answer)
     },
-    config: {name: '8ball', aliases: []}
+    config: {name: '8ball', aliases: [], categs: "fun", description: "Answer to your question ! 100% garranted true", use:"<question>"}
 }

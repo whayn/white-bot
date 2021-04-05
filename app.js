@@ -1,16 +1,19 @@
+
 const {Client} = require("discord.js")
-const { existsSync, readdirSync } = require('fs')
+const { existsSync, readdirSync, statSync } = require('fs')
 
 const client = new Client()
 module.exports = client
 
-client.commands = readdirSync('./events/message/commands/').filter((file) => file.endsWith('.js')).map((file) => require(`./events/message/commands/${file}`))
+const commands = []
+readdirSync(`./events/message/commands`).forEach(
+  (dir) => statSync(`./events/message/commands/${dir}`).isDirectory() && readdirSync(`./events/message/commands/${dir}`).forEach((file) => {
+      if(!file.endsWith(`.js`)) return console.log("Y'a des ptains de DS_store")
+      commands.push(require(`./events/message/commands/${dir}/${file}`));
+    })
+);
+client.commands = commands
+
 readdirSync("./events").forEach((dir) => existsSync(`./events/${dir}/index.js`) && client.on(dir, require(`./events/${dir}/index.js`))) 
 
 client.login(require('./config.json').token)
-
-
-
-// vérifier  si le début du message correspond à un élèment de l'array 'hello'
-// Vérifier si un élèment de l'array 'hello' correspond au début du message 
-// client.on(dir, (...args) => require(`./events/${dir}/index.js`)(...args))

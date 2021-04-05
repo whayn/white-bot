@@ -2,7 +2,7 @@ const client = require('../../app')
 
 module.exports = () => {
     const status = [
-        "Test bot whayn ", "!help", `${client.guilds.cache.size} serveurs`, `${client.users.cache.filter(user => !user.bot).size} utilisateurs`
+        "WhiteBot", "!help", `${client.guilds.cache.size} servers`, `${client.users.cache.filter(user => !user.bot).size} users`
     ]
     var interval = setInterval (function () {
         const random = Math.floor(Math.random() * status.length)

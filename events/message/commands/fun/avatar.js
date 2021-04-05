@@ -4,7 +4,7 @@ module.exports = {
       const membre = message.mentions.members.first() || message.member
       message.channel.send({
         embed: {
-          title: `Avatar de ${membre.displayName}`,
+          title: `Avatar de ${member.displayName}`,
           url: member.user.displayAvatarURL(),
           color: 0xe53935,
           image: {
@@ -22,5 +22,5 @@ module.exports = {
         },
       });
     },
-    config: {name: 'avatar', aliases: ['pp']}
+    config: {name: 'avatar', aliases: ['pp'], categs: "fun", description: "Display avatar of the chosen user", use:"[user mention]"}
 }
