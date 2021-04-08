@@ -8,7 +8,7 @@ module.exports = client
 const commands = []
 readdirSync(`./events/message/commands`).forEach(
   (dir) => statSync(`./events/message/commands/${dir}`).isDirectory() && readdirSync(`./events/message/commands/${dir}`).forEach((file) => {
-      if(!file.endsWith(`.js`)) return console.log("Y'a des ptains de DS_store")
+      if(!file.endsWith(`.js`)) return
       commands.push(require(`./events/message/commands/${dir}/${file}`));
     })
 );
